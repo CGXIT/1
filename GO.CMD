@@ -1,7 +1,7 @@
 @echo off
 ::============================================================================
 ::
-::  GO.CMD Beta V1 - OOBE / Desktop unified setup
+::  GO.CMD - OOBE / Desktop Window Upgrade
 ::
 ::  Just double-click. That's it.
 ::    - On OOBE  : runs immediately
@@ -22,7 +22,7 @@ if errorlevel 1 (
 )
 
 setlocal EnableExtensions EnableDelayedExpansion
-title Setup Beta V1
+title OOBE Window Upgrade V1
 
 set "ScriptVersion=1.0"
 set "ProGenericKey=VK7JG-NPHTM-C97JM-9MPGT-3V66T"
@@ -34,9 +34,9 @@ set "Path=%SystemRoot%\System32;%SystemRoot%;%SystemRoot%\System32\Wbem"
 
 :: Log file
 cd /d "%~dp0"
-set "LogFile=%~dp0SETUP-%COMPUTERNAME%.log"
+set "LogFile=%~dp0GO-%COMPUTERNAME%.log"
 echo. > "%LogFile%" 2>nul
-if errorlevel 1 set "LogFile=%TEMP%\SETUP-%COMPUTERNAME%.log"
+if errorlevel 1 set "LogFile=%TEMP%\GO-%COMPUTERNAME%.log"
 
 color 1F
 cls
@@ -46,7 +46,7 @@ cls
 ::============================================================================
 echo.
 echo  ============================================================
-echo    Hands-Free window Upgrading v%ScriptVersion%
+echo    OOBE Window Upgrade v%ScriptVersion%			08052026
 echo  ============================================================
 echo.
 
@@ -66,7 +66,7 @@ set "CurEdition="
 for /f "tokens=3" %%A in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v EditionID 2^>nul ^| findstr EditionID') do set "CurEdition=%%A"
 
 call :LOG "============================================================"
-call :LOG "  SETUP v%ScriptVersion% started  Time: %DATE% %TIME%"
+call :LOG "  GO v%ScriptVersion% started  Time: %DATE% %TIME%"
 call :LOG "  Computer: %COMPUTERNAME%  User: %USERNAME%"
 call :LOG "  Windows: %WinName%  Build: %WinBuild% (%WinVer%)"
 call :LOG "  Edition: %CurEdition%   Scenario: %Scenario%"
